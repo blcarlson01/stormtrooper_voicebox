@@ -1,0 +1,18 @@
+[Unit]
+Description=Remote Voice via RF
+After=multi-user.target
+
+[Service]
+ExecStartPre=/bin/sleep 30
+Type=idle
+Environment="DISPLAY=:0"
+Environment="XAUTHORITY=/home/pi/.Xauthority"
+ExecStart=/usr/bin/python3 /home/pi/sounds.py
+Restart=always
+RestartSec=5
+KillMode=process
+SendSIGHUP=no 
+
+
+[Install]
+WantedBy=graphical.target
